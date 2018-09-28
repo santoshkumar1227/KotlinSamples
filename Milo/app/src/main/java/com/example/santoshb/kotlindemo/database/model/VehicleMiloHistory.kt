@@ -13,7 +13,7 @@ open class VehicleMiloHistory : RealmModel,Serializable{
     var currentReading: Long = 0
     var previousReading: Long = 0
     var noOfLiters: Float = 0.0f
-    var millage: Float = 0.0f
+    var Mileage: Float = 0.0f
     var price: Float = 0.0f
     var amountPaid: Int = 0
 }

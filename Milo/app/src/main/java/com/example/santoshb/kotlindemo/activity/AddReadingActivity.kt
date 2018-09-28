@@ -108,7 +108,7 @@ class AddReadingActivity : AppCompatActivity() {
             }
 
             val diffReading: Long = presentReading.toLong() - lastReading
-            val millage: Float = diffReading / oilQuantity.toFloat()
+            val Mileage: Float = diffReading / oilQuantity.toFloat()
             try {
                 if (isNewReading) {
                     realm.let { it ->
@@ -128,7 +128,7 @@ class AddReadingActivity : AppCompatActivity() {
                             }
 
                             oneHistory.dateAdded = "".getDate()
-                            oneHistory.millage = millage
+                            oneHistory.Mileage = Mileage
 
                         }, {
                             dbResult(true)
@@ -154,7 +154,7 @@ class AddReadingActivity : AppCompatActivity() {
                                 }
 
                                 oneHistory?.dateAdded = "".getDate()
-                                oneHistory?.millage = millage
+                                oneHistory?.Mileage = Mileage
                             }
                         }
                     }

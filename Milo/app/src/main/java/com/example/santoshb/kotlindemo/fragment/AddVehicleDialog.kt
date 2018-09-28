@@ -61,11 +61,15 @@ class AddVehicleDialog : DialogFragment() {
         val btnAddVehicle = view.findViewById<Button>(R.id.btnAddVehicle)
         btnAddVehicle.setOnClickListener {
             if (validateVehicle()) {
-                if (isCreated)
-                    insertVehicle(vehicleNo)
-                else
-                    updateVehicle(vehicleNo)
-                dismiss()
+                if (!isVehicleAddedAlready()) {
+                    if (isCreated)
+                        insertVehicle(vehicleNo)
+                    else
+                        updateVehicle(vehicleNo)
+                    dismiss()
+                } else {
+                    activity?.let { it1 -> Commons.showValidationAlertDialog(it1,resources.getString(R.string.vehicle_added_already)) }
+                }
             }
         }
 
@@ -102,8 +106,22 @@ class AddVehicleDialog : DialogFragment() {
 
     }
 
+    fun isVehicleAddedAlready(): Boolean {
+        realm?.let { it ->
+            val results = it.where<Vehicles>()
+                    .contains("email", email)
+                    .contains("vehicleNo", vehicleNo)
+                    .findAll()
+            if (results.size != 0)
+                return true
+        }
+
+        return false
+    }
+
     private fun insertVehicle(vehicleNo: String) {
         try {
+
             realm?.let { it ->
                 it.executeTransactionAsync({ realm ->
                     // Add a person

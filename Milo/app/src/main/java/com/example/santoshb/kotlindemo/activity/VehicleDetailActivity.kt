@@ -12,6 +12,7 @@ import com.example.santoshb.kotlindemo.adapter.VehicleMiloHistoryAdapter
 import com.example.santoshb.kotlindemo.database.model.VehicleMiloHistory
 import com.example.santoshb.kotlindemo.database.model.Vehicles
 import com.example.santoshb.kotlindemo.fragment.AddInitialVehicleReadingDialog
+import com.example.santoshb.kotlindemo.util.Commons
 import com.example.santoshb.kotlindemo.util.stringEquals
 import io.realm.Realm
 import io.realm.kotlin.where
@@ -29,6 +30,7 @@ class VehicleDetailActivity : AppCompatActivity(), AddInitialVehicleReadingDialo
     var email: String = ""
     private var lastReading: Long = 0
     lateinit var realm: Realm
+    private var list = ArrayList<VehicleMiloHistory>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,9 +62,9 @@ class VehicleDetailActivity : AppCompatActivity(), AddInitialVehicleReadingDialo
 
         results?.let {
             if (results.size == 0) {
-                noMillageAdded.visibility = View.VISIBLE
+                noMileageAdded.visibility = View.VISIBLE
             } else {
-                val list = ArrayList<VehicleMiloHistory>()
+                list = ArrayList<VehicleMiloHistory>()
                 for (item in results) {
                     val vehicleMiloHistory = VehicleMiloHistory()
                     vehicleMiloHistory.id = item.id
@@ -72,7 +74,7 @@ class VehicleDetailActivity : AppCompatActivity(), AddInitialVehicleReadingDialo
                     vehicleMiloHistory.dateAdded = item.dateAdded
                     vehicleMiloHistory.currentReading = item.currentReading
                     vehicleMiloHistory.previousReading = item.previousReading
-                    vehicleMiloHistory.millage = item.millage
+                    vehicleMiloHistory.Mileage = item.Mileage
                     vehicleMiloHistory.price = item.price
                     vehicleMiloHistory.amountPaid = item.amountPaid
                     list.add(vehicleMiloHistory)
@@ -80,7 +82,7 @@ class VehicleDetailActivity : AppCompatActivity(), AddInitialVehicleReadingDialo
                 recycleVehiclesListHistory.layoutManager = LinearLayoutManager(this)
                 val vehicleMiloHistoryAdapter = VehicleMiloHistoryAdapter(list, this)
                 recycleVehiclesListHistory.adapter = vehicleMiloHistoryAdapter
-                noMillageAdded.visibility = View.GONE
+                noMileageAdded.visibility = View.GONE
             }
         }
     }
@@ -155,10 +157,14 @@ class VehicleDetailActivity : AppCompatActivity(), AddInitialVehicleReadingDialo
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.graphView -> {
-                val detailIntent = Intent(this, BarActivity::class.java)
-                detailIntent.putExtra("vehicle", vehicleNo)
-                detailIntent.putExtra("email", email)
-                startActivity(detailIntent)
+                if (list.size != 0) {
+                    val detailIntent = Intent(this, BarActivity::class.java)
+                    detailIntent.putExtra("vehicle", vehicleNo)
+                    detailIntent.putExtra("email", email)
+                    startActivity(detailIntent)
+                } else {
+                    Commons.showValidationAlertDialog(this,resources.getString(R.string.minimumOneReadingRequired))
+                }
             }
             android.R.id.home -> {
                 finish()

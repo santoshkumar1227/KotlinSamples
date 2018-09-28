@@ -8,6 +8,12 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/mileageSuggestions"
+        android:title="@string/mileageSuggestions"
+        app:showAsAction="never" />
+
+    <item
+        android:visible="false"
         android:id="@+id/logout"
         android:title="@string/logout"
         app:showAsAction="never" />

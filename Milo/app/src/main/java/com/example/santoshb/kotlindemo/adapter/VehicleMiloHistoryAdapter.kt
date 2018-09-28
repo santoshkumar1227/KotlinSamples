@@ -32,8 +32,8 @@ class VehicleMiloHistoryAdapter(private val items: ArrayList<VehicleMiloHistory>
         p0.imgEdit.visibility = View.GONE
         p0.tvReading.text = context.resources.getString(R.string.log) + " #" + (p1 + 1)
         p0.tvDateAdded.text = vehicleMiloHistory.dateAdded
-        p0.tvMillage.text = context.resources.getString(R.string.millage) + " :: " +
-                vehicleMiloHistory.millage.toString() + " " + context.resources.getString(R.string.km_hr)
+        p0.tvMileage.text = context.resources.getString(R.string.Mileage) + " :: " +
+                vehicleMiloHistory.Mileage.toString() + " " + context.resources.getString(R.string.km_hr)
         p0.tvBeforeReading.text = context.resources.getString(R.string.previous_reading) + " :: " +
                 vehicleMiloHistory.previousReading.toString() + " " + context.resources.getString(R.string.km)
         p0.tvAfterReading.text = context.resources.getString(R.string.reading) + " :: " +
@@ -55,7 +55,7 @@ class VehicleMiloHistoryAdapter(private val items: ArrayList<VehicleMiloHistory>
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
     val tvDateAdded: TextView = view.tvDateAdded
-    val tvMillage: TextView = view.tvMillage
+    val tvMileage: TextView = view.tvMileage
     val tvBeforeReading: TextView = view.tvBeforeReading
     val tvReading: TextView = view.tvReading
     val tvAfterReading: TextView = view.tvAfterReading

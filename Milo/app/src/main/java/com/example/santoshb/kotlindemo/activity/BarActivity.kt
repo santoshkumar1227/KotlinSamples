@@ -1,6 +1,5 @@
 package com.example.santoshb.kotlindemo.activity
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -39,12 +38,10 @@ class BarActivity : AppCompatActivity() {
         val list = ArrayList<String>()
         val barDataList = ArrayList<Int>()
         results?.let {
-            if (results.size == 0) {
-                noMillageAdded.visibility = View.VISIBLE
-            } else {
+            if (results.size != 0) {
                 for (item in results) {
-                    list.add(item.millage.toInt().toString())
-                    barDataList.add(item.millage.toInt())
+                    list.add(item.Mileage.toInt().toString())
+                    barDataList.add(item.Mileage.toInt())
                 }
             }
         }

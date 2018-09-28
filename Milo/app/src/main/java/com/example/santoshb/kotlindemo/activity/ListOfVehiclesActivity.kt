@@ -19,6 +19,7 @@ import io.realm.Realm
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_list_of_vehicles.*
 import android.widget.AdapterView.AdapterContextMenuInfo
+import com.example.santoshb.kotlindemo.database.model.VehicleMiloHistory
 import com.example.santoshb.kotlindemo.util.stringEquals
 import io.realm.kotlin.deleteFromRealm
 
@@ -97,6 +98,12 @@ class ListOfVehiclesActivity : AppCompatActivity(), AddVehicleDialog.AddVehicle 
                         Intent(this@ListOfVehiclesActivity, ProfileActivity::class.java)
                 )
             }
+
+            R.id.mileageSuggestions -> {
+                startActivity(
+                        Intent(this@ListOfVehiclesActivity, MileageSuggestionsActivity::class.java)
+                )
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -163,6 +170,16 @@ class ListOfVehiclesActivity : AppCompatActivity(), AddVehicleDialog.AddVehicle 
                                             }
                                         }
                                     }
+
+                                    val resultsLog = realm.where<VehicleMiloHistory>()
+                                            .contains("email", email)
+                                            .contains("vehicleNo", listOfVehicles[index])
+                                            .findAll()
+
+                                    realm.executeTransaction {
+                                        resultsLog.deleteAllFromRealm()
+                                    }
+
                                     loadVehicles()
                                 }
                             }
@@ -170,5 +187,4 @@ class ListOfVehiclesActivity : AppCompatActivity(), AddVehicleDialog.AddVehicle 
             }
         }
     }
-
 }

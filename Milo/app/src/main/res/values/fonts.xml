@@ -5,4 +5,5 @@
     <dimen name="medium">12sp</dimen>
     <dimen name="large">16sp</dimen>
     <dimen name="extraLarge">20sp</dimen>
+    <dimen name="extraExtraLarge">25sp</dimen>
 </resources>

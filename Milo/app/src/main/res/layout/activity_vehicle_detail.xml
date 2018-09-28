@@ -18,17 +18,17 @@
         android:layout_alignParentEnd="true" />
 
     <RelativeLayout
-        android:layout_above="@+id/addMillage"
+        android:layout_above="@+id/addMileage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvLastReading">
 
         <TextView
             android:layout_centerInParent="true"
-            android:id="@+id/noMillageAdded"
+            android:id="@+id/noMileageAdded"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/no_millage_added"
+            android:text="@string/no_Mileage_added"
             android:textColor="@color/ColorBlack"
             android:textSize="@dimen/medium"
             android:visibility="gone" />
@@ -41,7 +41,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/addMillage"
+        android:id="@+id/addMileage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

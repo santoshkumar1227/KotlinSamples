@@ -15,7 +15,6 @@
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -40,11 +39,15 @@
         <activity
             android:name=".activity.AddReadingActivity"
             android:label="@string/addReading"
-            tools:targetApi="jelly_bean"></activity>
+            tools:targetApi="jelly_bean" />
         <activity
-            android:parentActivityName=".activity.VehicleDetailActivity"
+            android:name=".activity.BarActivity"
             android:label="@string/graph_view"
-            android:name=".activity.BarActivity"></activity>
+            android:parentActivityName=".activity.VehicleDetailActivity" />
+        <activity
+            android:name=".activity.MileageSuggestionsActivity"
+            android:label="@string/mileageSuggestions"
+            android:parentActivityName=".activity.ListOfVehiclesActivity"></activity>
     </application>
 
 </manifest>
