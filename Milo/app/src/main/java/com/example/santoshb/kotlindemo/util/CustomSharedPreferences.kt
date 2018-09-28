@@ -34,7 +34,7 @@ class CustomSharedPreferences private constructor() {
             getInstanceEditor(context)?.putString(key, value)?.apply()
         }
 
-        fun readString(context: Context, key: String): String? {
+        fun getString(context: Context, key: String): String? {
             return getInstance(context)?.getString(key, "")
         }
     }

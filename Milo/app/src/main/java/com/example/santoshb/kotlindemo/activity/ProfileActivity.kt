@@ -67,7 +67,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun readUserProfile() {
-        val email: String? = CustomSharedPreferences.readString(this, "email")
+        val email: String? = CustomSharedPreferences.getString(this, "email")
         val results = realm.where<User>()
                 .contains("email", email)
                 .findAll()

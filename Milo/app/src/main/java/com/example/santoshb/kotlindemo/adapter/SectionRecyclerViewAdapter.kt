@@ -27,7 +27,7 @@ internal class SectionRecyclerViewAdapter(private val context: Context,
 
     override fun onBindViewHolder(holder: SectionViewHolder, position: Int) {
         val sectionModel = sectionModelArrayList[position]
-        holder?.let {
+        holder.let {
             holder.sectionLabel.text = sectionModel.sectionLabel
 
             //recycler view for items

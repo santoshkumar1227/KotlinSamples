@@ -106,7 +106,7 @@ class AddVehicleDialog : DialogFragment() {
 
     }
 
-    fun isVehicleAddedAlready(): Boolean {
+    private fun isVehicleAddedAlready(): Boolean {
         realm?.let { it ->
             val results = it.where<Vehicles>()
                     .contains("email", email)

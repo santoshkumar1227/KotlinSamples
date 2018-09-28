@@ -46,11 +46,13 @@
         <activity
             android:name=".activity.BarActivity"
             android:label="@string/graph_view"
-            android:parentActivityName=".activity.VehicleDetailActivity" />
+            android:parentActivityName=".activity.VehicleDetailActivity"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".activity.MileageSuggestionsActivity"
             android:label="@string/mileageSuggestions"
-            android:parentActivityName=".activity.ListOfVehiclesActivity" />
+            android:parentActivityName=".activity.ListOfVehiclesActivity"
+            tools:targetApi="jelly_bean" />
 
         <activity
             android:name=".activity.WebviewActivity"

@@ -3,13 +3,11 @@ package com.example.santoshb.kotlindemo.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import com.example.santoshb.kotlindemo.R
 import com.example.santoshb.kotlindemo.database.model.VehicleMiloHistory
 import io.realm.Realm
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_bar.*
-import kotlinx.android.synthetic.main.activity_vehicle_detail.*
 
 class BarActivity : AppCompatActivity() {
     private var vehicleNo: String = ""

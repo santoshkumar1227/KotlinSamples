@@ -122,7 +122,7 @@ class ListOfVehiclesActivity : AppCompatActivity(), AddVehicleDialog.AddVehicle 
 
     private fun listOfVehicles() {
         listOfVehicles.clear()
-        email = CustomSharedPreferences.readString(this, "email")
+        email = CustomSharedPreferences.getString(this, "email")
         val results = realm.where<Vehicles>()
                 .contains("email", email)
                 .findAll()

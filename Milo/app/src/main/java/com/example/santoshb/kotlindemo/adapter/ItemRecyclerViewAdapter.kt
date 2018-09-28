@@ -1,7 +1,6 @@
 package com.example.santoshb.kotlindemo.adapter
 
 import android.content.Context
-import java.nio.file.Files.size
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView

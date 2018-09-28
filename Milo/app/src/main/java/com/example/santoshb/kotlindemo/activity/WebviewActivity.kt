@@ -1,7 +1,7 @@
 package com.example.santoshb.kotlindemo.activity
 
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
-import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
@@ -13,11 +13,11 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.example.santoshb.kotlindemo.R
-import com.example.santoshb.kotlindemo.util.Commons
 import kotlinx.android.synthetic.main.activity_webview.*
 
 class WebviewActivity : AppCompatActivity() {
-    var url = ""
+    private var url = ""
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_webview)
@@ -37,7 +37,7 @@ class WebviewActivity : AppCompatActivity() {
         @TargetApi(Build.VERSION_CODES.LOLLIPOP)
         override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
             view?.loadUrl(request?.url.toString())
-            return true;
+            return true
         }
 
         override fun onPageFinished(view: WebView?, url: String?) {
@@ -48,7 +48,7 @@ class WebviewActivity : AppCompatActivity() {
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
-            webView.goBack();
+            webView.goBack()
             return true
         }
         return super.onKeyDown(keyCode, event)

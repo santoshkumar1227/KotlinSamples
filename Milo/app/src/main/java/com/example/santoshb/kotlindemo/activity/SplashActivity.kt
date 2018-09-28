@@ -5,8 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import com.example.santoshb.kotlindemo.R
+import com.example.santoshb.kotlindemo.`interface`.BooleanCallback
 import com.example.santoshb.kotlindemo.database.model.User
+import com.example.santoshb.kotlindemo.util.Commons
 import com.example.santoshb.kotlindemo.util.CustomSharedPreferences
+import com.example.santoshb.kotlindemo.util.stringEquals
 import io.realm.Realm
 import io.realm.kotlin.where
 import org.json.JSONObject
@@ -18,7 +21,19 @@ class SplashActivity : Activity() {
         setContentView(R.layout.activity_splash)
         realm = Realm.getDefaultInstance()
         Handler().postDelayed({
-            isUserExists()
+            if (CustomSharedPreferences.getString(this, "firstTime")?.stringEquals("")!!) {
+                Commons.showValidationAlertDialog(this,
+                        resources.getString(R.string.info_message),
+                        object : BooleanCallback {
+                            override fun booleanCallback(boolean: Boolean) {
+                                if (boolean) {
+                                    CustomSharedPreferences.putString(this@SplashActivity, "firstTime", "no")
+                                    isUserExists()
+                                }
+                            }
+                        }, false)
+            } else
+                isUserExists()
         }, 3000)
     }
 

@@ -47,7 +47,7 @@ class RegisterActivity : AppCompatActivity() {
             Commons.showValidationAlertDialog(this, resources.getString(R.string.userInsertSuccess),
                     object : BooleanCallback {
                         override fun booleanCallback(boolean: Boolean) {
-                            CustomSharedPreferences.putString(this@RegisterActivity, "email", mEmail);
+                            CustomSharedPreferences.putString(this@RegisterActivity, "email", mEmail)
                             startActivity(Intent(this@RegisterActivity, ListOfVehiclesActivity::class.java))
                             finish()
                         }

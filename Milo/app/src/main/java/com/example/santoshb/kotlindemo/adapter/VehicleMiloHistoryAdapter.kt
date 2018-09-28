@@ -3,7 +3,6 @@ package com.example.santoshb.kotlindemo.adapter
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat.startActivityForResult
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,6 @@ import com.example.santoshb.kotlindemo.activity.AddReadingActivity
 import com.example.santoshb.kotlindemo.activity.VehicleDetailActivity
 import com.example.santoshb.kotlindemo.database.model.VehicleMiloHistory
 import kotlinx.android.synthetic.main.vehicle_list_history_item.view.*
-import org.jetbrains.anko.startActivityForResult
 
 class VehicleMiloHistoryAdapter(private val items: ArrayList<VehicleMiloHistory>, val context: Context) :
         RecyclerView.Adapter<ViewHolder>() {

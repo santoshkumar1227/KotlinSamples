@@ -52,6 +52,8 @@
     <string name="graph_view">Graph View</string>
     <string name="graph_message">Each bar represents Mileage received for each log , maximum value added is 100.</string>
 
+    <string name="info_message"><b>Remember</b> :: This app will store the data in device database so user not able to access the data from any of other device and also uninstalling the application may cause to remove entire data.\n \n Thank you.</string>
+
     //Validation Messages
     <string name="UsernameOrPasswordMissing">Username or Password not proper</string>
     <string name="UsernameOrPasswordNotCorrect">Username or Password not correct</string>

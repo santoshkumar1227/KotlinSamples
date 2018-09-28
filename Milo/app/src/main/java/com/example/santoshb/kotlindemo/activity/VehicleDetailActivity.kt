@@ -64,7 +64,7 @@ class VehicleDetailActivity : AppCompatActivity(), AddInitialVehicleReadingDialo
             if (results.size == 0) {
                 noMileageAdded.visibility = View.VISIBLE
             } else {
-                list = ArrayList<VehicleMiloHistory>()
+                list = ArrayList()
                 for (item in results) {
                     val vehicleMiloHistory = VehicleMiloHistory()
                     vehicleMiloHistory.id = item.id
