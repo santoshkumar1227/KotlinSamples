@@ -104,6 +104,18 @@ class ListOfVehiclesActivity : AppCompatActivity(), AddVehicleDialog.AddVehicle 
                         Intent(this@ListOfVehiclesActivity, MileageSuggestionsActivity::class.java)
                 )
             }
+
+            R.id.bestMileageBikes -> {
+                val webViewIntent = Intent(this@ListOfVehiclesActivity, WebviewActivity::class.java)
+                webViewIntent.putExtra("url", resources.getString(R.string.best_bikes_url))
+                startActivity(webViewIntent)
+            }
+
+            R.id.bestMileageCars -> {
+                val webViewIntent = Intent(this@ListOfVehiclesActivity, WebviewActivity::class.java)
+                webViewIntent.putExtra("url", resources.getString(R.string.best_cars_url))
+                startActivity(webViewIntent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

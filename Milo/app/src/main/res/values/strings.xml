@@ -46,6 +46,9 @@
     <string name="km_hr">km/hr</string>
     <string name="km">km</string>
     <string name="mileageSuggestions">Mileage Suggestions</string>
+    <string name="bestMileageVehicles">Best Mileage Vehicles</string>
+    <string name="bestMileageBikes">Best Mileage Bikes</string>
+    <string name="bestMileageCars">Best Mileage Cars</string>
     <string name="graph_view">Graph View</string>
     <string name="graph_message">Each bar represents Mileage received for each log , maximum value added is 100.</string>
 
@@ -76,4 +79,7 @@
     <string name="vehicle_added_already">Vehicle added already</string>
     <string name="minimumOneReadingRequired">Minimum one reading required to see in Graph view</string>
 
+    //Url's
+    <string name="best_bikes_url">https://www.bikewale.com/best-mileage-bikes-in-india/</string>
+    <string name="best_cars_url">https://www.carblogindia.com/best-mileage-cars-in-india/</string>
 </resources>

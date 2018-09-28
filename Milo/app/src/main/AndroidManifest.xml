@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.santoshb.kotlindemo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".AppController"
         android:allowBackup="true"
@@ -15,6 +17,7 @@
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -47,7 +50,12 @@
         <activity
             android:name=".activity.MileageSuggestionsActivity"
             android:label="@string/mileageSuggestions"
-            android:parentActivityName=".activity.ListOfVehiclesActivity"></activity>
+            android:parentActivityName=".activity.ListOfVehiclesActivity" />
+
+        <activity
+            android:name=".activity.WebviewActivity"
+            android:label="@string/bestMileageVehicles" />
+
     </application>
 
 </manifest>

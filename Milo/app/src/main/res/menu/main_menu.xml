@@ -8,6 +8,16 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/bestMileageBikes"
+        android:title="@string/bestMileageBikes"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/bestMileageCars"
+        android:title="@string/bestMileageCars"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/mileageSuggestions"
         android:title="@string/mileageSuggestions"
         app:showAsAction="never" />
