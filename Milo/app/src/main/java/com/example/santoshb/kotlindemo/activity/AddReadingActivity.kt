@@ -27,6 +27,8 @@ class AddReadingActivity : AppCompatActivity() {
     private var amountPaid: String = ""
     private var oilQuantityTrans = true
     private lateinit var realm: Realm
+    private var isNewReading = true
+    private var vehicleMiloHistory: VehicleMiloHistory? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,10 +43,36 @@ class AddReadingActivity : AppCompatActivity() {
         if (intent.hasExtra("lastReading"))
             lastReading = intent.getLongExtra("lastReading", 0L)
 
+        if (intent.hasExtra("logdata")) {
+            vehicleMiloHistory = intent.getBundleExtra("logdata").getSerializable("logdata") as VehicleMiloHistory
+            isNewReading = false
+            updateUiForEdit()
+        }
+
         etPrevReading.setText(lastReading.toString())
 
         radioButtonListeners()
     }
+
+    private fun updateUiForEdit() {
+        vehicleMiloHistory?.let {
+            etPresentReading.setText(it.currentReading.toString())
+            lastReading = it.previousReading
+            if (it.amountPaid == 0) {
+                radioOil.isChecked = true
+                etOil.setText(it.noOfLiters.toString())
+                linearOilAmount.visibility = View.GONE
+                inputOilQuantity.visibility = View.VISIBLE
+            } else {
+                radioAmount.isChecked = true
+                etAmountPaid.setText(it.amountPaid.toString())
+                etPrice.setText(it.price.toString())
+                linearOilAmount.visibility = View.VISIBLE
+                inputOilQuantity.visibility = View.GONE
+            }
+        }
+    }
+
 
     private fun radioButtonListeners() {
         radioAmount.setOnCheckedChangeListener { _, isChecked ->
@@ -82,32 +110,56 @@ class AddReadingActivity : AppCompatActivity() {
             val diffReading: Long = presentReading.toLong() - lastReading
             val millage: Float = diffReading / oilQuantity.toFloat()
             try {
-                realm.let { it ->
-                    it.executeTransactionAsync({ realm ->
-                        // Add a person
-                        val oneHistory = realm.createObject<VehicleMiloHistory>()
-                        oneHistory.id = (System.currentTimeMillis() / 1000).toString()
-                        oneHistory.email = email
-                        oneHistory.vehicleNo = vehicleNo
-                        oneHistory.currentReading = presentReading.toLong()
-                        oneHistory.previousReading = lastReading
-                        if (oilQuantityTrans){
-                            oneHistory.noOfLiters = oilQuantity.toFloat()
-                        }else{
-                            oneHistory.price = oilPrice.toFloat()
-                            oneHistory.amountPaid = amountPaid.toInt()
+                if (isNewReading) {
+                    realm.let { it ->
+                        it.executeTransactionAsync({ realm ->
+                            // Add a person
+                            val oneHistory = realm.createObject<VehicleMiloHistory>()
+                            oneHistory.id = (System.currentTimeMillis() / 1000).toString()
+                            oneHistory.email = email
+                            oneHistory.vehicleNo = vehicleNo
+                            oneHistory.currentReading = presentReading.toLong()
+                            oneHistory.previousReading = lastReading
+                            if (oilQuantityTrans) {
+                                oneHistory.noOfLiters = oilQuantity.toFloat()
+                            } else {
+                                oneHistory.price = oilPrice.toFloat()
+                                oneHistory.amountPaid = amountPaid.toInt()
+                            }
+
+                            oneHistory.dateAdded = "".getDate()
+                            oneHistory.millage = millage
+
+                        }, {
+                            dbResult(true)
+                        }, {
+                            dbResult(false)
+                        })
+                    }
+                } else {
+                    realm.let { it ->
+                        val results = it.where<VehicleMiloHistory>()
+                                .contains("id", vehicleMiloHistory?.id)
+                                .findAll()
+
+                        if (results.size != 0) {
+                            it.executeTransaction {
+                                val oneHistory = results[0]
+                                oneHistory?.currentReading = presentReading.toLong()
+                                if (oilQuantityTrans) {
+                                    oneHistory?.noOfLiters = oilQuantity.toFloat()
+                                } else {
+                                    oneHistory?.price = oilPrice.toFloat()
+                                    oneHistory?.amountPaid = amountPaid.toInt()
+                                }
+
+                                oneHistory?.dateAdded = "".getDate()
+                                oneHistory?.millage = millage
+                            }
                         }
-
-                        oneHistory.dateAdded="".getDate()
-                        oneHistory.millage = millage
-
-                    }, {
-                        dbResult(true)
-                    }, {
-                        dbResult(false)
-                    })
+                    }
                 }
-
+                dbResult(true)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -130,7 +182,15 @@ class AddReadingActivity : AppCompatActivity() {
                 }
             }
 
-            Commons.showValidationAlertDialog(this, resources.getString(R.string.successfullyAdded),
+            var successMsg = ""
+
+            successMsg = if (isNewReading)
+                resources.getString(R.string.successfullyAdded)
+            else
+                resources.getString(R.string.successfullyUpdated)
+
+
+            Commons.showValidationAlertDialog(this, successMsg,
                     object : BooleanCallback {
                         override fun booleanCallback(boolean: Boolean) {
                             if (boolean) {

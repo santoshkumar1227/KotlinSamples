@@ -65,10 +65,16 @@ class VehicleDetailActivity : AppCompatActivity(), AddInitialVehicleReadingDialo
                 val list = ArrayList<VehicleMiloHistory>()
                 for (item in results) {
                     val vehicleMiloHistory = VehicleMiloHistory()
+                    vehicleMiloHistory.id = item.id
+                    vehicleMiloHistory.email = item.email
+                    vehicleMiloHistory.vehicleNo = item.vehicleNo
+                    vehicleMiloHistory.noOfLiters = item.noOfLiters
+                    vehicleMiloHistory.dateAdded = item.dateAdded
                     vehicleMiloHistory.currentReading = item.currentReading
                     vehicleMiloHistory.previousReading = item.previousReading
-                    vehicleMiloHistory.dateAdded = item.dateAdded
                     vehicleMiloHistory.millage = item.millage
+                    vehicleMiloHistory.price = item.price
+                    vehicleMiloHistory.amountPaid = item.amountPaid
                     list.add(vehicleMiloHistory)
                 }
                 recycleVehiclesListHistory.layoutManager = LinearLayoutManager(this)
@@ -154,7 +160,7 @@ class VehicleDetailActivity : AppCompatActivity(), AddInitialVehicleReadingDialo
                 detailIntent.putExtra("email", email)
                 startActivity(detailIntent)
             }
-            android.R.id.home-> {
+            android.R.id.home -> {
                 finish()
             }
         }

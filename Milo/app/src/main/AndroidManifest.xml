@@ -27,9 +27,7 @@
             android:label="@string/vehicles" />
         <activity
             android:name=".activity.RegisterActivity"
-            android:label="@string/registration"
-            android:parentActivityName=".activity.LoginActivity"
-            tools:targetApi="jelly_bean" />
+            android:label="@string/registration" />
         <activity
             android:name=".activity.ProfileActivity"
             android:label="@string/profile"

@@ -2,9 +2,10 @@ package com.example.santoshb.kotlindemo.database.model
 
 import io.realm.RealmModel
 import io.realm.annotations.RealmClass
+import java.io.Serializable
 
 @RealmClass
-open class VehicleMiloHistory : RealmModel {
+open class VehicleMiloHistory : RealmModel,Serializable{
     var id: String = ""
     var email: String = ""
     var vehicleNo: String = ""

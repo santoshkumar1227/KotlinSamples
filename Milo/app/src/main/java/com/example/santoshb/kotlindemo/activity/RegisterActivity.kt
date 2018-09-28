@@ -1,5 +1,6 @@
 package com.example.santoshb.kotlindemo.activity
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -8,6 +9,7 @@ import com.example.santoshb.kotlindemo.R
 import com.example.santoshb.kotlindemo.`interface`.BooleanCallback
 import com.example.santoshb.kotlindemo.database.model.User
 import com.example.santoshb.kotlindemo.util.Commons
+import com.example.santoshb.kotlindemo.util.CustomSharedPreferences
 import com.example.santoshb.kotlindemo.util.isEmail
 import com.example.santoshb.kotlindemo.util.stringEquals
 import io.realm.Realm
@@ -28,7 +30,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        //  supportActionBar?.setDisplayHomeAsUpEnabled(true)
         // Open the realm for the UI thread.
         realm = Realm.getDefaultInstance()
     }
@@ -45,6 +47,8 @@ class RegisterActivity : AppCompatActivity() {
             Commons.showValidationAlertDialog(this, resources.getString(R.string.userInsertSuccess),
                     object : BooleanCallback {
                         override fun booleanCallback(boolean: Boolean) {
+                            CustomSharedPreferences.putString(this@RegisterActivity, "email", mEmail);
+                            startActivity(Intent(this@RegisterActivity, ListOfVehiclesActivity::class.java))
                             finish()
                         }
                     })
@@ -73,6 +77,7 @@ class RegisterActivity : AppCompatActivity() {
         } catch (ex: Exception) {
             ex.printStackTrace()
         }
+
     }
 
     private fun readAllViews() {
@@ -93,13 +98,13 @@ class RegisterActivity : AppCompatActivity() {
             validationMessage = resources.getString(R.string.enterValidEmail)
         } else if (TextUtils.isEmpty(mPhone)) {
             validationMessage = resources.getString(R.string.enterPhone)
-        } else if (TextUtils.isEmpty(mPassword)) {
+        } /*else if (TextUtils.isEmpty(mPassword)) {
             validationMessage = resources.getString(R.string.enterPassword)
         } else if (TextUtils.isEmpty(mConfPassword)) {
             validationMessage = resources.getString(R.string.enterConfPassword)
         } else if (!mPassword.stringEquals(mConfPassword)) {
             validationMessage = resources.getString(R.string.passwordNotMatch)
-        }
+        }*/
 
         return if (validationMessage.stringEquals(""))
             true
