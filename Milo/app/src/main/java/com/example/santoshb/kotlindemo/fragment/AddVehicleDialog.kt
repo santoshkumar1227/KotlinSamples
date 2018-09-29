@@ -68,7 +68,7 @@ class AddVehicleDialog : DialogFragment() {
                         updateVehicle(vehicleNo)
                     dismiss()
                 } else {
-                    activity?.let { it1 -> Commons.showValidationAlertDialog(it1,resources.getString(R.string.vehicle_added_already)) }
+                    activity?.let { it1 -> Commons.showValidationAlertDialog(it1, resources.getString(R.string.vehicle_added_already)) }
                 }
             }
         }
@@ -122,7 +122,7 @@ class AddVehicleDialog : DialogFragment() {
     private fun insertVehicle(vehicleNo: String) {
         try {
 
-            realm?.let { it ->
+            /*realm?.let { it ->
                 it.executeTransactionAsync({ realm ->
                     // Add a person
                     val person = realm.createObject<Vehicles>()
@@ -134,8 +134,17 @@ class AddVehicleDialog : DialogFragment() {
                 }, {
                     dbResult(false)
                 })
+            }*/
+            realm?.let {
+                it.executeTransaction {
+                    // Add a person
+                    val person = it.createObject<Vehicles>()
+                    person.email = email
+                    person.vehicleNo = vehicleNo
+                    person.id = (System.currentTimeMillis() / 1000).toString()
+                }
             }
-
+            dbResult(true)
         } catch (e: Exception) {
             e.printStackTrace()
         }

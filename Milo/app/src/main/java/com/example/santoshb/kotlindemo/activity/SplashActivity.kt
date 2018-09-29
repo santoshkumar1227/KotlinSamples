@@ -31,7 +31,7 @@ class SplashActivity : Activity() {
                                     isUserExists()
                                 }
                             }
-                        }, false)
+                        }, false, resources.getString(R.string.remember))
             } else
                 isUserExists()
         }, 3000)

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.santoshb.kotlindemo">
 
@@ -53,11 +54,14 @@
             android:label="@string/mileageSuggestions"
             android:parentActivityName=".activity.ListOfVehiclesActivity"
             tools:targetApi="jelly_bean" />
-
         <activity
             android:name=".activity.WebviewActivity"
             android:label="@string/bestMileageVehicles" />
-
+        <activity
+            android:name=".activity.MileageCalculationActivity"
+            android:label="@string/calculateMileage"
+            android:parentActivityName=".activity.ListOfVehiclesActivity"
+            tools:targetApi="jelly_bean" />
     </application>
 
 </manifest>

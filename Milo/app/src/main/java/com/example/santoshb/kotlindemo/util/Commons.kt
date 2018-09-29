@@ -13,22 +13,16 @@ class Commons {
         fun isEmptyEditText(editText: EditText?): Boolean = readFromEditText(editText).isEmpty()
         fun showValidationAlertDialog(context: Context,
                                       message: String,
-                                      booleanCallback: BooleanCallback? = null, cancelable: Boolean = true) {
-            val dialog = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                AlertDialog.Builder(context)
-                        .setMessage(Html.fromHtml(message,Html.FROM_HTML_MODE_LEGACY) )
-                        .setCancelable(cancelable)
-                        .setNegativeButton("ok") { _, _ ->
-                            booleanCallback?.booleanCallback(true)
-                        }
-            } else {
-                AlertDialog.Builder(context)
-                        .setMessage(Html.fromHtml(message) )
-                        .setCancelable(cancelable)
-                        .setNegativeButton("ok") { _, _ ->
-                            booleanCallback?.booleanCallback(true)
-                        }
-            }
+                                      booleanCallback: BooleanCallback? = null,
+                                      cancelable: Boolean = true, title: String = "") {
+            val dialog =
+                    AlertDialog.Builder(context)
+                            .setTitle(title)
+                            .setMessage(message)
+                            .setCancelable(cancelable)
+                            .setNegativeButton("ok") { _, _ ->
+                                booleanCallback?.booleanCallback(true)
+                            }
             dialog.show()
         }
 

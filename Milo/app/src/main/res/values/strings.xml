@@ -27,11 +27,11 @@
     <string name="addInitialReading">Add Initial Reading</string>
     <string name="last_reading">Last Reading</string>
     <string name="latest_reading">Latest Reading</string>
-    <string name="last_reading_km">Last Reading (km)</string>
+    <string name="last_reading_km">Previous Reading (km)</string>
     <string name="latest_reading_km">Latest Reading (km)</string>
     <string name="present_reading">Present Reading</string>
     <string name="present_reading_km">Present Reading (km)</string>
-    <string name="oil_quantity">Oil Quantity</string>
+    <string name="oil_quantity">Oil Quantity(Liters)</string>
     <string name="previous_reading">Previous Reading</string>
     <string name="amountPaid">Amount Paid</string>
     <string name="oil_price">Oil Price</string>
@@ -50,9 +50,12 @@
     <string name="bestMileageBikes">Best Mileage Bikes</string>
     <string name="bestMileageCars">Best Mileage Cars</string>
     <string name="graph_view">Graph View</string>
+    <string name="calculate">Calculate</string>
+    <string name="calculateMileage">Calculate Mileage</string>
+    <string name="mileageReceived">Mileage received</string>
     <string name="graph_message">Each bar represents Mileage received for each log , maximum value added is 100.</string>
-
-    <string name="info_message"><b>Remember</b> :: This app will store the data in device database so user not able to access the data from any of other device and also uninstalling the application may cause to remove entire data.\n \n Thank you.</string>
+    <string name="remember">Remember</string>
+    <string name="info_message">This app will store the data in device database so user not able to access the data from any of other device and also uninstalling the application may cause to remove entire data.\n \n Thank you.</string>
 
     //Validation Messages
     <string name="UsernameOrPasswordMissing">Username or Password not proper</string>
@@ -71,6 +74,7 @@
     <string name="vehicleInsertFailed">Vehicle insert failed</string>
     <string name="enter_initial_reading">Enter initial reading</string>
     <string name="enter_current_reading">Enter present reading</string>
+    <string name="enter_previous_reading">Enter previous reading</string>
     <string name="enter_oil_quantity">Enter oil quantity</string>
     <string name="enter_amount_paid">Enter amount paid</string>
     <string name="enter_oil_price">Enter oil price</string>
@@ -80,6 +84,7 @@
     <string name="successfullyUpdated">Successfully updated</string>
     <string name="vehicle_added_already">Vehicle added already</string>
     <string name="minimumOneReadingRequired">Minimum one reading required to see in Graph view</string>
+    <string name="valuesNotProper">Invalid values added</string>
 
     //Url's
     <string name="best_bikes_url">https://www.bikewale.com/best-mileage-bikes-in-india/</string>

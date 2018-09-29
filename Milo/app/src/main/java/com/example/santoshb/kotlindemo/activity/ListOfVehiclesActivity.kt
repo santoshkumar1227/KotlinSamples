@@ -105,6 +105,12 @@ class ListOfVehiclesActivity : AppCompatActivity(), AddVehicleDialog.AddVehicle 
                 )
             }
 
+            R.id.calculateMileage -> {
+                startActivity(
+                        Intent(this@ListOfVehiclesActivity, MileageCalculationActivity::class.java)
+                )
+            }
+
             R.id.bestMileageBikes -> {
                 val webViewIntent = Intent(this@ListOfVehiclesActivity, WebviewActivity::class.java)
                 webViewIntent.putExtra("url", resources.getString(R.string.best_bikes_url))

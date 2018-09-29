@@ -103,65 +103,69 @@ class AddReadingActivity : AppCompatActivity() {
 
     fun saveReading(view: View) {
         if (validateAll()) {
-            if (!oilQuantityTrans) {
-                oilQuantity = (amountPaid.toFloat() / oilPrice.toFloat()).toString()
-            }
-
-            val diffReading: Long = presentReading.toLong() - lastReading
-            val Mileage: Float = diffReading / oilQuantity.toFloat()
             try {
-                if (isNewReading) {
-                    realm.let { it ->
-                        it.executeTransactionAsync({ realm ->
-                            // Add a person
-                            val oneHistory = realm.createObject<VehicleMiloHistory>()
-                            oneHistory.id = (System.currentTimeMillis() / 1000).toString()
-                            oneHistory.email = email
-                            oneHistory.vehicleNo = vehicleNo
-                            oneHistory.currentReading = presentReading.toLong()
-                            oneHistory.previousReading = lastReading
-                            if (oilQuantityTrans) {
-                                oneHistory.noOfLiters = oilQuantity.toFloat()
-                            } else {
-                                oneHistory.price = oilPrice.toFloat()
-                                oneHistory.amountPaid = amountPaid.toInt()
-                            }
+                if (!oilQuantityTrans) {
+                    oilQuantity = (amountPaid.toFloat() / oilPrice.toFloat()).toString()
+                }
 
-                            oneHistory.dateAdded = "".getDate()
-                            oneHistory.Mileage = Mileage
-
-                        }, {
-                            dbResult(true)
-                        }, {
-                            dbResult(false)
-                        })
-                    }
-                } else {
-                    realm.let { it ->
-                        val results = it.where<VehicleMiloHistory>()
-                                .contains("id", vehicleMiloHistory?.id)
-                                .findAll()
-
-                        if (results.size != 0) {
-                            it.executeTransaction {
-                                val oneHistory = results[0]
-                                oneHistory?.currentReading = presentReading.toLong()
+                val diffReading: Long = presentReading.toLong() - lastReading
+                val mileage: Float = diffReading / oilQuantity.toFloat()
+                try {
+                    if (isNewReading) {
+                        realm.let { it ->
+                            it.executeTransactionAsync({ realm ->
+                                // Add a person
+                                val oneHistory = realm.createObject<VehicleMiloHistory>()
+                                oneHistory.id = (System.currentTimeMillis() / 1000).toString()
+                                oneHistory.email = email
+                                oneHistory.vehicleNo = vehicleNo
+                                oneHistory.currentReading = presentReading.toLong()
+                                oneHistory.previousReading = lastReading
                                 if (oilQuantityTrans) {
-                                    oneHistory?.noOfLiters = oilQuantity.toFloat()
+                                    oneHistory.noOfLiters = oilQuantity.toFloat()
                                 } else {
-                                    oneHistory?.price = oilPrice.toFloat()
-                                    oneHistory?.amountPaid = amountPaid.toInt()
+                                    oneHistory.price = oilPrice.toFloat()
+                                    oneHistory.amountPaid = amountPaid.toInt()
                                 }
 
-                                oneHistory?.dateAdded = "".getDate()
-                                oneHistory?.Mileage = Mileage
+                                oneHistory.dateAdded = "".getDate()
+                                oneHistory.Mileage = mileage
+
+                            }, {
+                                dbResult(true)
+                            }, {
+                                dbResult(false)
+                            })
+                        }
+                    } else {
+                        realm.let { it ->
+                            val results = it.where<VehicleMiloHistory>()
+                                    .contains("id", vehicleMiloHistory?.id)
+                                    .findAll()
+
+                            if (results.size != 0) {
+                                it.executeTransaction {
+                                    val oneHistory = results[0]
+                                    oneHistory?.currentReading = presentReading.toLong()
+                                    if (oilQuantityTrans) {
+                                        oneHistory?.noOfLiters = oilQuantity.toFloat()
+                                    } else {
+                                        oneHistory?.price = oilPrice.toFloat()
+                                        oneHistory?.amountPaid = amountPaid.toInt()
+                                    }
+
+                                    oneHistory?.dateAdded = "".getDate()
+                                    oneHistory?.Mileage = mileage
+                                }
                             }
                         }
                     }
+                    dbResult(true)
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
-                dbResult(true)
-            } catch (e: Exception) {
-                e.printStackTrace()
+            } catch (ex: java.lang.Exception) {
+                Commons.showValidationAlertDialog(this, resources.getString(R.string.valuesNotProper))
             }
         }
     }
@@ -215,7 +219,7 @@ class AddReadingActivity : AppCompatActivity() {
 
         if (TextUtils.isEmpty(presentReading) || presentReading.stringEquals("0")) {
             validateMessage = resources.getString(R.string.enter_current_reading)
-        } else if (presentReading.toInt() <= lastReading) {
+        } else if (presentReading.toLong() <= lastReading) {
             validateMessage = resources.getString(R.string.enter_valid_readings)
         } else {
             if (oilQuantityTrans) {
