@@ -13,12 +13,14 @@ import android.widget.Button
 import com.example.santoshb.kotlindemo.R
 import com.example.santoshb.kotlindemo.`interface`.BooleanCallback
 import com.example.santoshb.kotlindemo.activity.ListOfVehiclesActivity
+import com.example.santoshb.kotlindemo.database.model.VehicleMiloHistory
 import com.example.santoshb.kotlindemo.database.model.Vehicles
 import com.example.santoshb.kotlindemo.util.Commons
 import com.example.santoshb.kotlindemo.util.stringEquals
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
+import kotlinx.android.synthetic.main.activity_vehicle_detail.*
 import kotlinx.android.synthetic.main.fragment_add_vehicle.*
 
 class AddVehicleDialog : DialogFragment() {
@@ -64,8 +66,16 @@ class AddVehicleDialog : DialogFragment() {
                 if (!isVehicleAddedAlready()) {
                     if (isCreated)
                         insertVehicle(vehicleNo)
-                    else
-                        updateVehicle(vehicleNo)
+                    else {
+                        if (canUpdatable()) {
+                            updateVehicle(vehicleNo)
+                        } else {
+                            activity?.let { it1 ->
+                                Commons.showValidationAlertDialog(it1,
+                                        resources.getString(R.string.tripsAddedAlready))
+                            }
+                        }
+                    }
                     dismiss()
                 } else {
                     activity?.let { it1 -> Commons.showValidationAlertDialog(it1, resources.getString(R.string.vehicle_added_already)) }
@@ -86,6 +96,18 @@ class AddVehicleDialog : DialogFragment() {
                 etVehicle.append(vehicleNoFromList)
             }
         }
+    }
+
+    private fun canUpdatable(): Boolean {
+        realm?.let { it ->
+            val results = it.where<VehicleMiloHistory>()
+                    .contains("email", email)
+                    .contains("vehicleNo", vehicleNoFromList)
+                    .findAll()
+
+            return results.size == 0
+        }
+        return true
     }
 
     private fun updateVehicle(vehicleNo: String) {

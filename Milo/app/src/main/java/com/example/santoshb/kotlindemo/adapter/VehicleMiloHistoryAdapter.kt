@@ -31,7 +31,7 @@ class VehicleMiloHistoryAdapter(private val items: ArrayList<VehicleMiloHistory>
         p0.tvReading.text = context.resources.getString(R.string.log) + " #" + (p1 + 1)
         p0.tvDateAdded.text = vehicleMiloHistory.dateAdded
         p0.tvMileage.text = context.resources.getString(R.string.Mileage) + " :: " +
-                vehicleMiloHistory.Mileage.toString() + " " + context.resources.getString(R.string.km_hr)
+                vehicleMiloHistory.Mileage.toString() + " " + context.resources.getString(R.string.km_lt)
         p0.tvBeforeReading.text = context.resources.getString(R.string.previous_reading) + " :: " +
                 vehicleMiloHistory.previousReading.toString() + " " + context.resources.getString(R.string.km)
         p0.tvAfterReading.text = context.resources.getString(R.string.reading) + " :: " +

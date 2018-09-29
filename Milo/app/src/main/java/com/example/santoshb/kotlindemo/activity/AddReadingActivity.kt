@@ -60,11 +60,13 @@ class AddReadingActivity : AppCompatActivity() {
             lastReading = it.previousReading
             if (it.amountPaid == 0) {
                 radioOil.isChecked = true
+                oilQuantityTrans = true
                 etOil.setText(it.noOfLiters.toString())
                 linearOilAmount.visibility = View.GONE
                 inputOilQuantity.visibility = View.VISIBLE
             } else {
                 radioAmount.isChecked = true
+                oilQuantityTrans = false
                 etAmountPaid.setText(it.amountPaid.toString())
                 etPrice.setText(it.price.toString())
                 linearOilAmount.visibility = View.VISIBLE
@@ -224,13 +226,13 @@ class AddReadingActivity : AppCompatActivity() {
         } else {
             if (oilQuantityTrans) {
                 if (TextUtils.isEmpty(oilQuantity)) {
-                    validateMessage = resources.getString(R.string.enter_oil_quantity)
+                    validateMessage = resources.getString(R.string.enter_Fuel_quantity)
                 }
             } else {
-                if (TextUtils.isEmpty(amountPaid) || amountPaid.toInt() == 0) {
+                if (TextUtils.isEmpty(amountPaid) || amountPaid.toFloat() == 0F) {
                     validateMessage = resources.getString(R.string.enter_amount_paid)
-                } else if (TextUtils.isEmpty(oilPrice) || oilPrice.toInt() == 0) {
-                    validateMessage = resources.getString(R.string.enter_oil_price)
+                } else if (TextUtils.isEmpty(oilPrice) || oilPrice.toFloat() == 0F) {
+                    validateMessage = resources.getString(R.string.enter_Fuel_price)
                 }
             }
         }

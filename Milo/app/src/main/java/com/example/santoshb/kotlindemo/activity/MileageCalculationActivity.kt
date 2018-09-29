@@ -67,7 +67,7 @@ class MileageCalculationActivity : AppCompatActivity() {
                 val mileage: Float = diffReading / oilQuantity.toFloat()
 
                 Commons.showValidationAlertDialog(this,
-                        resources.getString(R.string.mileageReceived) + " :: " + mileage + " " + resources.getString(R.string.km_hr),
+                        resources.getString(R.string.mileageReceived) + " :: " + mileage + " " + resources.getString(R.string.km_lt),
                         object : BooleanCallback {
                             override fun booleanCallback(boolean: Boolean) {
                                 if (boolean) {
@@ -100,13 +100,13 @@ class MileageCalculationActivity : AppCompatActivity() {
         } else {
             if (oilQuantityTrans) {
                 if (TextUtils.isEmpty(oilQuantity)) {
-                    validateMessage = resources.getString(R.string.enter_oil_quantity)
+                    validateMessage = resources.getString(R.string.enter_Fuel_quantity)
                 }
             } else {
-                if (TextUtils.isEmpty(amountPaid) || amountPaid.toInt() == 0) {
+                if (TextUtils.isEmpty(amountPaid) || amountPaid.toFloat() == 0F) {
                     validateMessage = resources.getString(R.string.enter_amount_paid)
-                } else if (TextUtils.isEmpty(oilPrice) || oilPrice.toInt() == 0) {
-                    validateMessage = resources.getString(R.string.enter_oil_price)
+                } else if (TextUtils.isEmpty(oilPrice) || oilPrice.toFloat() == 0F) {
+                    validateMessage = resources.getString(R.string.enter_Fuel_price)
                 }
             }
         }
