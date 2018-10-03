@@ -1,30 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <HorizontalScrollView
-        android:layout_marginTop="@dimen/_20sdp"
-        android:id="@+id/horizontalScrollView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <view
-            android:id="@+id/barView"
-            class="im.dacer.androidcharts.BarView"
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <view
+                android:id="@+id/barView"
+                class="im.dacer.androidcharts.BarView"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp" />
+        </HorizontalScrollView>
+
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="300dp" />
-    </HorizontalScrollView>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="@dimen/_8sdp"
+            android:text="@string/graph_message"
+            android:textColor="@color/ColorBlack"
+            android:textSize="@dimen/large" />
 
-    <TextView
-        android:textSize="@dimen/large"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
+    </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewGraph"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_8sdp"
-        android:text="@string/graph_message"
-        android:textColor="@color/ColorBlack" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id" />
 
-</LinearLayout>
+</RelativeLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,28 +15,46 @@
             android:id="@+id/noVehicles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_centerInParent="true"
+            android:gravity="center"
             android:text="@string/no_vehicle_added"
             android:visibility="gone" />
 
         <ListView
             android:id="@+id/recycleVehiclesList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/_50sdp" />
 
     </RelativeLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabAddVehicle"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/_5sdp"
-        android:src="@drawable/ic_plus"
-        android:tint="@color/ColorWhite"
-        app:fabSize="auto"
-        app:rippleColor="@color/colorAccent" />
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabAddVehicle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/_5sdp"
+            android:src="@drawable/ic_plus"
+            android:tint="@color/ColorWhite"
+            app:fabSize="auto"
+            app:rippleColor="@color/colorAccent" />
 
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/ad_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id" />
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -1,165 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contextView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".activity.AddReadingActivity">
+    android:layout_height="match_parent">
 
-    <android.support.design.widget.TextInputLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_8sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/etPresentReading"
-            android:layout_width="match_parent"
-            android:digits="0123456789"
-            android:layout_height="wrap_content"
-            android:hint="@string/present_reading_km"
-            android:inputType="number" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/_8sdp"
-        android:layout_marginLeft="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/etPrevReading"
-            android:enabled="false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/last_reading_km"
-            android:digits="0123456789"
-            android:inputType="number" />
-    </android.support.design.widget.TextInputLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginRight="@dimen/_8sdp"
-        android:layout_marginLeft="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:text="@string/transactionType"
-        android:textSize="@dimen/large" />
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/radioOil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/Fuel"
-            android:textSize="@dimen/large" />
-
-        <RadioButton
-            android:id="@+id/radioAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_8sdp"
-            android:text="@string/amount"
-            android:textSize="@dimen/large" />
-
-    </RadioGroup>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/inputOilQuantity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/_8sdp"
-        android:layout_marginLeft="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/etOil"
-            android:digits="0123456789."
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/Fuel_quantity"
-            android:inputType="number" />
-    </android.support.design.widget.TextInputLayout>
-
-    <LinearLayout
-        android:id="@+id/linearOilAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
         android:orientation="vertical"
-        android:visibility="gone">
+        tools:context=".activity.AddReadingActivity">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_8sdp"
-            android:layout_marginLeft="@dimen/_8sdp"
-            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_margin="@dimen/_8sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/etAmountPaid"
+                android:id="@+id/etPresentReading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="0123456789"
-                android:hint="@string/amountPaid"
-                android:inputType="text" />
+                android:nextFocusDown="@id/etPrevReading"
+                android:hint="@string/present_reading_km"
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_8sdp"
-            android:layout_marginLeft="@dimen/_8sdp"
             android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_8sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/etPrice"
+                android:id="@+id/etPrevReading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:enabled="false"
+                android:hint="@string/last_reading_km"
+                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:text="@string/transactionType"
+            android:textSize="@dimen/large" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioOil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/Fuel"
+                android:textSize="@dimen/large" />
+
+            <RadioButton
+                android:id="@+id/radioAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:text="@string/amount"
+                android:textSize="@dimen/large" />
+
+        </RadioGroup>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/inputOilQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etOil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="0123456789."
-                android:hint="@string/enter_Fuel_price"
-                android:inputType="text" />
+                android:hint="@string/Fuel_quantity"
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/linearOilAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etAmountPaid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:hint="@string/amountPaid"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789."
+                    android:hint="@string/enter_Fuel_price"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:onClick="saveReading"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputPhone" />
+
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewAddReading"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/_8sdp"
-        android:layout_marginLeft="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:onClick="saveReading"
-        android:text="@string/save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputPhone" />
-
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id" />
+</RelativeLayout>

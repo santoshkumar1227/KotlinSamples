@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.santoshb.kotlindemo">
+    package="com.example.santoshb.milo">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -43,6 +43,7 @@
         <activity
             android:name=".activity.AddReadingActivity"
             android:label="@string/addReading"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".activity.BarActivity"
@@ -61,6 +62,7 @@
             android:name=".activity.MileageCalculationActivity"
             android:label="@string/calculateMileage"
             android:parentActivityName=".activity.ListOfVehiclesActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             tools:targetApi="jelly_bean" />
     </application>
 
