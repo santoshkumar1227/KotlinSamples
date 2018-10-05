@@ -13,6 +13,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.santoshb.mytube.R
 import com.example.santoshb.mytube.dummy.Commons
+import com.example.santoshb.mytube.dummy.ServiceToLoadVideosInBG
 import com.example.santoshb.mytube.dummy.model.Genre
 import com.example.santoshb.mytube.dummy.model.Video
 import io.realm.Realm
@@ -34,6 +35,7 @@ class SplashActivity : Activity() {
         super.onResume()
         val results = realm.where<Video>().findAll()
         if (results.size > 0) {
+            startService(Intent(this, ServiceToLoadVideosInBG::class.java))
             Handler().postDelayed({
                 startActivity(Intent(this, AllMixActivity::class.java))
                 finish()
@@ -43,8 +45,9 @@ class SplashActivity : Activity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     private fun loadDataFromSheet() {
-        val progressDialog: ProgressDialog = ProgressDialog(this)
+        val progressDialog = ProgressDialog(this)
         progressDialog.setCancelable(false)
         progressDialog.setMessage("Loading Videos ...")
         progressDialog.show()
@@ -66,8 +69,6 @@ class SplashActivity : Activity() {
     }
 
     private fun afterResponse(response: JSONObject) {
-        val trailersList = ArrayList<Video>()
-        val teasersList = ArrayList<Video>()
         val recordsArray = response.getJSONArray("records")
         for (i in 0 until recordsArray.length()) {
             val oneJson: JSONObject = recordsArray.getJSONObject(i)
