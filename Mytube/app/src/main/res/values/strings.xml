@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Mytube</string>
+
+    <string name="apiKey">AIzaSyBTL0KgRRLXGztfJM8A79Wnw_uzXx0Hb8o</string>
+
+    // YouTube video id
+    <string name="YOUTUBE_VIDEO_CODE">5aYSxW1e638</string>
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="title_activity_main_screen">MainScreenActivity</string>
+    <string name="title_Trailers">Trailers</string>
+    <string name="title_Promos">Promos</string>
+    <string name="title_Teasers">Teasers</string>
+    <string name="Trailers_Teasers">Trailers &amp; Teasers</string>
+</resources>
