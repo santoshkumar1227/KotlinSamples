@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mytube</string>
+    <string name="app_name">My Tube</string>
 
     <string name="apiKey">AIzaSyBTL0KgRRLXGztfJM8A79Wnw_uzXx0Hb8o</string>
 
@@ -13,4 +13,8 @@
     <string name="title_Promos">Promos</string>
     <string name="title_Teasers">Teasers</string>
     <string name="Trailers_Teasers">Trailers &amp; Teasers</string>
+
+    <item type="id" name="initialize" />
+    <item type="id" name="videoid"/>
+    <item type="id" name="thumbnailloader"/>
 </resources>

@@ -13,8 +13,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.santoshb.mytube.R
 import com.example.santoshb.mytube.dummy.Commons
-import com.example.santoshb.mytube.dummy.ServiceToLoadVideosInBG
-import com.example.santoshb.mytube.dummy.model.Genre
+import com.example.santoshb.mytube.dummy.service.ServiceToLoadVideosInBG
 import com.example.santoshb.mytube.dummy.model.Video
 import io.realm.Realm
 import io.realm.kotlin.createObject

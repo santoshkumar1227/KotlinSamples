@@ -1,4 +1,4 @@
-package com.example.santoshb.mytube.dummy
+package com.example.santoshb.mytube.dummy.service
 
 import android.annotation.SuppressLint
 import android.app.IntentService
@@ -8,6 +8,7 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.santoshb.mytube.dummy.Commons
 import com.example.santoshb.mytube.dummy.model.Video
 import io.realm.Realm
 import io.realm.kotlin.createObject
@@ -50,6 +51,7 @@ class ServiceToLoadVideosInBG : IntentService("") {
                 var id = ""
                 var title = ""
                 var type = ""
+                var language = ""
 
                 if (oneJson.has("Id"))
                     id = oneJson.getString("Id")
@@ -60,12 +62,16 @@ class ServiceToLoadVideosInBG : IntentService("") {
                 if (oneJson.has("Type"))
                     type = oneJson.getString("Type")
 
+                if (oneJson.has("Language"))
+                    language = oneJson.getString("Language")
+
 
                 realm.executeTransaction {
                     val video = realm.createObject<Video>()
                     video.id = id
                     video.title = title
                     video.type = type
+                    video.language= language
                 }
             }
         }

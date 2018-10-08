@@ -32,7 +32,7 @@
             android:parentActivityName=".dummy.activity.AllMixActivity"
             android:name=".dummy.activity.ShowTypeBasedVideosActivity"
             android:launchMode="singleTop" />
-        <service android:name=".dummy.ServiceToLoadVideosInBG"/>
+        <service android:name=".dummy.service.ServiceToLoadVideosInBG"/>
     </application>
 
 </manifest>
