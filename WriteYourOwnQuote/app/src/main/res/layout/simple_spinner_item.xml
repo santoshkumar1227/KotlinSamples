@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CustomizeTextView"
+    android:background="@color/transparent"
+    android:layout_width="match_parent"
+    android:gravity="left|center"
+    android:textColor="@color/white" />

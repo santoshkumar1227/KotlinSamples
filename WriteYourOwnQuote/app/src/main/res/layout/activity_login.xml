@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayoutLogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.self.santoshbaratam.myquotes.LoginActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/_10p"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/editTextEmailLogin"
+                    style="@style/CustomizeEditText"
+                    android:layout_width="match_parent"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/white" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/viewLineHeight"
+                    android:background="@color/viewLineColor" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/editTextPasswordLogin"
+                    style="@style/CustomizeEditText"
+                    android:layout_width="match_parent"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                style="@style/CustomizeButton"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_20p"
+                android:background="@color/primary_darker"
+                android:text="@string/login" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:visibility="gone"
+                android:id="@+id/btnNoAccountYet"
+                style="@style/CustomizeButton"
+                android:layout_width="match_parent"
+                android:background="@color/transparent"
+                android:text="@string/noAccountYet"
+                android:textAllCaps="false"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textViewVersion"
+            style="@style/CustomizeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="Version No :: 5.3.2" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

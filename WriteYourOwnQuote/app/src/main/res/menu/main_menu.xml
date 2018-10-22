@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+   <!-- <item
+        android:id="@+id/viewProfile"
+        android:title="@string/viewProfile"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/changePwd"
+        android:title="@string/changePassword"
+        android:visible="true" />-->
+
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout"
+        android:visible="true" />
+
+</menu>

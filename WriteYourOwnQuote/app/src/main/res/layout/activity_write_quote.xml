@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayoutWriteQuote"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.self.santoshbaratam.myquotes.WriteQuoteActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarListWriteQuote"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary_darker"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20p"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v7.widget.AppCompatTextView
+            style="@style/CustomizeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/writeQuote" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/editTextQuoteDesc"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="top"
+            android:background="@drawable/border"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/_5p" />
+
+        <android.support.v7.widget.AppCompatTextView
+            style="@style/CustomizeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="@dimen/_20p"
+            android:text="@string/quoteAuthor" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/editTextQuoteAuthor"
+            style="@style/CustomizeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border"
+            android:inputType="text" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnSaveQuote"
+            style="@style/CustomizeButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/_20p"
+            android:padding="@dimen/_10p"
+            android:text="@string/saveQuote" />
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

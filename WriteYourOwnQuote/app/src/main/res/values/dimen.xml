@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="_3dp">3dp</dimen>
+    <dimen name="_5p">5dp</dimen>
+    <dimen name="_10p">10dp</dimen>
+    <dimen name="_20p">20dp</dimen>
+    <dimen name="_50dp">50dp</dimen>
+    <dimen name="viewLineHeight">1dp</dimen>
+</resources>
