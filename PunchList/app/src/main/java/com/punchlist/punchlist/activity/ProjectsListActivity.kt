@@ -7,24 +7,24 @@ import com.punchlist.punchlist.R
 import com.punchlist.punchlist.adapter.CommonAdapter
 import com.punchlist.punchlist.model.CommonModel
 import com.punchlist.punchlist.utils.DividerItemDecoration
-import kotlinx.android.synthetic.main.activity_department_list.*
+import kotlinx.android.synthetic.main.activity_projects_list.*
 
-class DepartmentListActivity : AppCompatActivity() {
+class ProjectsListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_department_list)
+        setContentView(R.layout.activity_projects_list)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         prePareData()
     }
 
     private fun prePareData() {
-        val commonModel1 = CommonModel("1", "2", "3", "4", "5", "6")
-        val commonModel2 = CommonModel("1", "2", "3", "4", "5", "6")
-        val commonModel3 = CommonModel("1", "2", "3", "4", "5", "6")
-        val commonModel4 = CommonModel("1", "2", "3", "4", "5", "6")
-        val commonModel5 = CommonModel("1", "2", "3", "4", "5", "6")
-        val commonModel6 = CommonModel("1", "2", "3", "4", "5", "6")
+        val commonModel1 = CommonModel("1", "2", "3", "4")
+        val commonModel2 = CommonModel("1", "2", "3", "4")
+        val commonModel3 = CommonModel("1", "2", "3", "4")
+        val commonModel4 = CommonModel("1", "2", "3", "4")
+        val commonModel5 = CommonModel("1", "2", "3", "4")
+        val commonModel6 = CommonModel("1", "2", "3", "4")
 
         val items = ArrayList<CommonModel>()
         items.add(commonModel1)
@@ -37,8 +37,8 @@ class DepartmentListActivity : AppCompatActivity() {
     }
 
     private fun setAdapter(items: ArrayList<CommonModel>) {
-        recyclerViewDepartmentList.addItemDecoration(DividerItemDecoration(this))
-        recyclerViewDepartmentList.adapter = CommonAdapter(this, items)
+        recyclerViewProjectsList.addItemDecoration(DividerItemDecoration(this))
+        recyclerViewProjectsList.adapter = CommonAdapter(this, items)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

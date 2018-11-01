@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_150sdp"
-            android:background="@color/colorAccent"
+            android:background="@color/colorLightGray"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -48,13 +48,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@color/colorAccent"
+            android:background="@color/colorLightGray"
             android:gravity="center"
             android:orientation="vertical">
 
             <View
                 android:layout_width="@dimen/_150sdp"
-                android:layout_height="@dimen/_3sdp"
+                android:layout_height="@dimen/_1sdp"
                 android:background="@color/colorBlue" />
 
         </LinearLayout>
@@ -63,13 +63,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorDarkGray"
             android:gravity="center"
             android:orientation="vertical">
 
             <View
                 android:layout_width="@dimen/_150sdp"
-                android:layout_height="@dimen/_3sdp"
+                android:layout_height="@dimen/_1sdp"
                 android:background="@color/colorBlue" />
 
         </LinearLayout>
@@ -78,7 +78,7 @@
             android:id="@+id/recyclerViewAdminHomePage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark" />
+            android:background="@color/colorDarkGray" />
 
     </LinearLayout>
 

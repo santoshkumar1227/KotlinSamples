@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorLightGray</item>
     </style>
 
     <style name="CustomEditText" parent="Base.Widget.AppCompat.EditText">
@@ -13,7 +14,7 @@
         <item name="android:layout_height">@dimen/editTextHeight</item>
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:textColorHint">@color/colorGray</item>
-        <item name="android:textSize">@dimen/fontMedium</item>
+        <item name="android:textSize">@dimen/fontLarge</item>
         <item name="android:paddingLeft">@dimen/_2sdp</item>
     </style>
 </resources>

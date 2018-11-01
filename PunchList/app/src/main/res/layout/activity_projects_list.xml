@@ -6,13 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/colorLightGray">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorLightGray"
-        tools:context=".activity.DepartmentListActivity">
+        tools:context=".activity.ProjectsListActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,28 +21,14 @@
             <EditText
                 android:id="@+id/deptName"
                 style="@style/CustomEditText"
-                android:hint="Department Name"
+                android:hint="Project Name"
                 android:inputType="text"
                 android:textColorHint="@color/colorHintAlternate" />
 
             <EditText
                 android:id="@+id/deptAdminName"
                 style="@style/CustomEditText"
-                android:hint="Department's Admin Name"
-                android:inputType="text"
-                android:textColorHint="@color/colorHintAlternate" />
-
-            <EditText
-                android:id="@+id/adminEmail"
-                style="@style/CustomEditText"
-                android:hint="Admin Email"
-                android:inputType="text"
-                android:textColorHint="@color/colorHintAlternate" />
-
-            <EditText
-                android:id="@+id/adminMobileNumber"
-                style="@style/CustomEditText"
-                android:hint="Admin Mobile Number"
+                android:hint="Project Code"
                 android:inputType="text"
                 android:textColorHint="@color/colorHintAlternate" />
 
@@ -60,11 +44,11 @@
                 android:textSize="@dimen/fontLarge" />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerViewDepartmentList"
+                android:id="@+id/recyclerViewProjectsList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:nestedScrollingEnabled="false"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
         </LinearLayout>

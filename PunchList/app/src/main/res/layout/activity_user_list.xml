@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorLightGray"
-        tools:context=".activity.DepartmentListActivity">
+        tools:context=".activity.UserListActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                 android:textSize="@dimen/fontLarge" />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerViewDepartmentList"
+                android:id="@+id/recyclerViewUsersList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"

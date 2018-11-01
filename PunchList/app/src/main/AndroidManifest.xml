@@ -25,7 +25,17 @@
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".activity.AdminUserHomePageActivity" />
-        <activity android:label="@string/departmentList" android:name=".activity.DepartmentListActivity"></activity>
+        <activity
+            android:name=".activity.DepartmentListActivity"
+            android:label="@string/departmentList" />
+        <activity
+            android:name=".activity.ProjectsListActivity"
+            android:label="Projects List" />
+        <activity
+            android:name=".activity.UserListActivity"
+            android:label="Users List" />
+        <activity android:name=".activity.WebViewActivity" />
+        <activity android:label="My Projects" android:name=".activity.MyProjectsActivity"></activity>
     </application>
 
 </manifest>

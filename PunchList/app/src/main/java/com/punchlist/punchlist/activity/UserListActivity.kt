@@ -7,13 +7,13 @@ import com.punchlist.punchlist.R
 import com.punchlist.punchlist.adapter.CommonAdapter
 import com.punchlist.punchlist.model.CommonModel
 import com.punchlist.punchlist.utils.DividerItemDecoration
-import kotlinx.android.synthetic.main.activity_department_list.*
+import kotlinx.android.synthetic.main.activity_user_list.*
 
-class DepartmentListActivity : AppCompatActivity() {
+class UserListActivity : AppCompatActivity()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_department_list)
+        setContentView(R.layout.activity_user_list)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         prePareData()
     }
@@ -37,8 +37,8 @@ class DepartmentListActivity : AppCompatActivity() {
     }
 
     private fun setAdapter(items: ArrayList<CommonModel>) {
-        recyclerViewDepartmentList.addItemDecoration(DividerItemDecoration(this))
-        recyclerViewDepartmentList.adapter = CommonAdapter(this, items)
+        recyclerViewUsersList.addItemDecoration(DividerItemDecoration(this))
+        recyclerViewUsersList.adapter = CommonAdapter(this, items)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
