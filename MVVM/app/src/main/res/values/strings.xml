@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MVVM</string>
+    <string name="bankName">X-Bank</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="logout">Logout</string>
+    <string name="amount">Amount</string>
+    <string name="log">Log</string>
+
+    <string name="Withdraw">Withdraw</string>
+    <string name="Deposit">Deposit</string>
+    <string name="Transfer">Transfer</string>
+    <string name="Statement">Statement</string>
+</resources>
