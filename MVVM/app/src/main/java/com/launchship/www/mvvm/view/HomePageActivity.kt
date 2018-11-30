@@ -1,5 +1,6 @@
 package com.launchship.www.mvvm.view
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Build
@@ -11,6 +12,8 @@ import com.launchship.www.mvvm.R
 import com.launchship.www.mvvm.db.model.Logging
 import com.launchship.www.mvvm.util.Commons
 import com.launchship.www.mvvm.view.adapter.GridSingleItemAdapter
+import com.launchship.www.mvvm.view.adapter.MiniStatementAdapter
+import com.launchship.www.mvvm.view.adapter.StatementAdapter
 import com.launchship.www.mvvm.view.interfaces.ClickListener
 import com.launchship.www.mvvm.viewmodel.HomePageViewModel
 import kotlinx.android.synthetic.main.activity_home_page.*
@@ -21,6 +24,8 @@ class HomePageActivity : AppCompatActivity(), ClickListener {
 
     var list: MutableList<String>? = null
     lateinit var homePageViewModel: HomePageViewModel
+    var adapter: MiniStatementAdapter? = null
+    var miniStatement: List<Logging>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +35,24 @@ class HomePageActivity : AppCompatActivity(), ClickListener {
     override fun onStart() {
         super.onStart()
         homePageViewModel = ViewModelProviders.of(this).get(HomePageViewModel::class.java)
+        homePageViewModel.getMiniStatement(this)
         setNameTitle()
         setRecyclerView()
+        loadMiniStatement()
+    }
+
+    private fun loadMiniStatement() {
+        miniStatement = ArrayList()
+        recyclerViewMiniStatement.setHasFixedSize(true)
+        adapter = MiniStatementAdapter(this, miniStatement as ArrayList<Logging>)
+        recyclerViewMiniStatement.adapter = adapter
+        homePageViewModel.getAllWords()?.observe(this,
+            Observer<List<Logging>> { t ->
+                if (t?.size!! > 10)
+                    adapter?.updateData(t?.subList(0, 10))
+                else
+                    adapter?.updateData(t)
+            })
     }
 
     private fun setRecyclerView() {
@@ -45,7 +66,7 @@ class HomePageActivity : AppCompatActivity(), ClickListener {
     }
 
     private fun setNameTitle() {
-        var loggedUser = homePageViewModel.getLoggedUserName(applicationContext)
+        val loggedUser = homePageViewModel.getLoggedUserName(applicationContext)
         supportActionBar?.title = "Welcome $loggedUser"
         tvName.text = "A/c Name :: $loggedUser"
         accNo.text = "A/c No :: ${Commons.acNo}"
@@ -72,7 +93,7 @@ class HomePageActivity : AppCompatActivity(), ClickListener {
 
     override fun itemClick(position: Int) {
         if (list?.get(position) != resources.getString(R.string.Statement)) {
-            val intent: Intent = Intent(applicationContext, CommonActivity::class.java)
+            val intent = Intent(applicationContext, CommonActivity::class.java)
             intent.putExtra("name", list?.get(position))
             startActivityForResult(intent, 100)
         } else {
@@ -99,14 +120,14 @@ class HomePageActivity : AppCompatActivity(), ClickListener {
                 }
                 refreshBalance()
 
-                val logging=Logging()
+                val logging = Logging()
                 logging.setAccNo("123")
                 logging.setTransactionAmount(amount)
                 logging.setTransactionType(type)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     logging.setTransactionDate(LocalDateTime.now().toString())
                 }
-                homePageViewModel.insertLogging(applicationContext,logging)
+                homePageViewModel.insertLogging(applicationContext, logging)
             }
         }
     }

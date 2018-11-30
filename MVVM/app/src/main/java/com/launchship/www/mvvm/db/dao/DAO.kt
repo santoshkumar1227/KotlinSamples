@@ -12,6 +12,9 @@ interface DAO {
     @Query("SELECT * FROM Logging")
     fun getAll(): List<Logging>
 
+    @Query("SELECT * FROM Logging")
+    fun getLiveDataAll(): LiveData<List<Logging>>
+
     @Insert
     fun insert(task: Logging)
 

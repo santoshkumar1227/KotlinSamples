@@ -10,29 +10,27 @@ import com.launchship.www.mvvm.R
 import com.launchship.www.mvvm.db.model.Logging
 import com.launchship.www.mvvm.view.adapter.StatementAdapter.LoggingViewHolder
 
-class StatementAdapter(val context: Context, var list: List<Logging>) :
-    RecyclerView.Adapter<LoggingViewHolder>() {
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): LoggingViewHolder {
-        return LoggingViewHolder(LayoutInflater.from(context).inflate(R.layout.item_statement, p0, false))
-    }
-
+class MiniStatementAdapter(val context: Context, var list: List<Logging>) :
+    RecyclerView.Adapter<MiniStatementAdapter.MiniStatementViewHolder>() {
     override fun getItemCount(): Int = list.size
 
-    override fun onBindViewHolder(p0: LoggingViewHolder, p1: Int) {
+    override fun onBindViewHolder(p0: MiniStatementViewHolder, p1: Int) {
         val logging: Logging = list[p1]
         p0.transactionAmount.text = "Amount : ${logging.getTransactionAmount().toString()}"
-        p0.transactionCount.text = "#${p1 + 1}"
         p0.transactionType.text = "Transacton Type : ${logging.getTransactionType()}"
-        p0.transactionDate.text = "Transacton Date : ${logging.getTransactionDate()}"
-
     }
 
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MiniStatementViewHolder {
+        return MiniStatementViewHolder(LayoutInflater.from(context).inflate(R.layout.item_mini_statement,p0,false))
+    }
 
-
-    class LoggingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var transactionCount = view.findViewById<TextView>(R.id.transactionCount)
+    class MiniStatementViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var transactionType = view.findViewById<TextView>(R.id.transactionType)
         var transactionAmount = view.findViewById<TextView>(R.id.transactionAmount)
-        var transactionDate = view.findViewById<TextView>(R.id.transactionDate)
+    }
+
+    fun updateData(t: List<Logging>?) {
+        this.list = t!!
+        notifyDataSetChanged()
     }
 }

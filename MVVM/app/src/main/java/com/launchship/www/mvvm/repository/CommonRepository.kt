@@ -35,6 +35,11 @@ class CommonRepository {
         return StatementLogs().execute(dao).get()
     }
 
+    fun loadMiniStatement(context: Context): LiveData<List<Logging>>? {
+        getDao(context)
+        return dao?.getLiveDataAll()
+    }
+
     class StatementLogs : AsyncTask<DAO, List<Logging>, List<Logging>>() {
         override fun doInBackground(vararg params: DAO?): List<Logging>? {
             return params[0]?.getAll()
@@ -89,7 +94,7 @@ class CommonRepository {
             return commonRepository as CommonRepository
         }
 
-        fun getDatabase(context: Context): CommonDatabase? {
+        private fun getDatabase(context: Context): CommonDatabase? {
             if (INSTANCE == null) {
                 /*synchronized(CommonDatabase::class.java) {
                     if (INSTANCE == null) {
@@ -103,7 +108,7 @@ class CommonRepository {
                 }*/
                 INSTANCE = Room.databaseBuilder<CommonDatabase>(
                     context.applicationContext,
-                    CommonDatabase::class.java!!, "word_database"
+                    CommonDatabase::class.java, "word_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()
