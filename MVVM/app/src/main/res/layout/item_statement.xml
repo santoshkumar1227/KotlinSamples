@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+        app:cardBackgroundColor="@color/colorAccent"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardMaxElevation="5dp"
+        app:cardPreventCornerOverlap="true"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/transactionCount"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:text="#1"
+                android:textColor="@color/textColorWhite"
+                android:padding="10dp"
+                android:textSize="@dimen/large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/transactionType"
+                android:textStyle="bold"
+                android:text="#1"
+                android:textColor="@color/textColorWhite"
+                android:padding="10dp"
+                android:textSize="@dimen/medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/transactionAmount"
+                android:textStyle="bold"
+                android:text="#1"
+                android:textColor="@color/textColorWhite"
+                android:padding="10dp"
+                android:textSize="@dimen/medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/transactionDate"
+                android:textStyle="bold"
+                android:layout_gravity="right"
+                android:text="#1"
+                android:textColor="@color/textColorWhite"
+                android:padding="10dp"
+                android:textSize="@dimen/medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
